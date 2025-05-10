@@ -1,0 +1,26 @@
+#! /bin/sh
+
+# set default cursor
+xsetroot -cursor_name left_ptr
+
+# set i3lock
+#xss-lock --transfer-sleep-lock -- i3lock --nofork --color=121212 &
+
+# start gnome policy kit agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+~/scripts/manager.sh sxhkd &
+~/.config/picom/launch.sh &
+~/.config/gammastep/launch.sh &
+~/.config/bspwm/polybar/launch.sh &
+~/scripts/manager.sh dunst &
+~/scripts/manager.sh nm-applet &
+~/scripts/manager.sh blueman-applet &
+~/scripts/media/mnotifyd.sh &
+
+#set a wallpaper
+#feh --bg-fill --randomize ~/Pictures/wallpapers/
+#feh --bg-fill --randomize ~/Pictures/wallpapers/UNIX
+~/.fehbg &
+
+#xss-lock --transfer-sleep-lock -- betterlockscreen --dim 40 --blur 0.6 --lock dimblur &

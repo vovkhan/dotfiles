@@ -1,0 +1,64 @@
+# General Options
+--no-abort-on-error # Continue processing playlist even if some videos are unavailable.
+--no-flat-playlist # Extracts video info from playlists.
+
+# Video Selection
+--no-match-filter # No filtering of download links.
+--no-break-match-filters # Continue processing even if a filter match is found.
+#--download-archive "~/.config/yt-dlp/archive.db" # Archives download IDs to avoid duplicates.
+--break-per-input # Only stops the current download on failure, not the whole playlist.
+
+# Download Options
+--concurrent-fragments 3 # Download 3 fragments simultaneously.
+--throttled-rate 150K # Minimum download rate threshold before restarting.
+--retries 5 # Maximum retries for failed downloads.
+--file-access-retries 3 # Retries for file access errors.
+--retry-sleep linear=1::2 # Linear retry delay for downloads.
+--retry-sleep fragment:exp=1:20 # Exponential retry delay for fragment downloads.
+--abort-on-unavailable-fragments # Stops download if content is not fully available.
+--no-keep-fragments # Deletes fragments after merging.
+--no-lazy-playlist # Processes videos only after playlist parsing is complete.
+
+# Filesystem Options
+--paths "~/Music/yt-dlp/" # Downloads saved to this directory.
+#--paths "~/Music/test/" # Downloads saved to this directory.
+#--output "%(channel)s/%(uploader)s/%(album)s/%(playlist_index)s. %(title)s [%(id)s].%(ext)s" # Output file template.
+--output "%(uploader)s/%(channel)s/%(album)s/%(playlist_index)s. %(title)s [%(id)s].%(ext)s" # Output file template.
+--output-na-placeholder NA # Placeholder for unavailable fields in output template.
+--no-restrict-filenames # Allows unicode characters in filenames.
+--windows-filenames # Ensures filenames are compatible with Windows.
+--force-overwrites # Overwrites existing files.
+--no-continue # Does not resume partially downloaded files.
+--part # Uses .part files during download.
+--no-mtime # Doesn't alter the last-modified time.
+--no-write-info-json # Skips writing metadata to .json files.
+--write-description -o "description:.info/%(channel)s/%(album)s/%(title)s [%(id)s].%(ext)s" # Save descriptions.
+
+# Thumbnail Options
+--write-thumbnail -o "thumbnail:.info/%(channel)s/%(album)s/%(title)s [%(id)s].%(ext)s" # Save thumbnails to disk.
+
+# Verbosity and Simulation Options
+--no-quiet # Displays default verbosity.
+--progress # Show download progress.
+
+# Video Format Options
+--format bestaudio/bestaudio # Selects the best audio format available.
+--prefer-free-formats # Prefers free formats where possible.
+--check-formats # Verifies format availability.
+
+# Post-Processing Options
+--extract-audio # Extracts audio from videos.
+--audio-format opus # Converts audio to Opus format.
+--audio-quality 0 # Ensures best quality for audio.
+--embed-thumbnail # Embeds thumbnails into audio files.
+--embed-metadata # Embeds metadata into audio files.
+
+# Thumbnail Processing
+--convert-thumbnails png # Converts thumbnails to PNG format.
+--ppa "ThumbnailsConvertor+FFmpeg_o:-c:v png -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\""
+
+# Additional Tips:
+# - Ensure your `--paths` option matches your desired download directory structure.
+# - Review the `--output` template to ensure it aligns with how you want your files organized.
+# - If you have specific needs for format verification or rate limits, adjust `--throttled-rate` and `--concurrent-fragments` accordingly.
+
