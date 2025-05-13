@@ -1,0 +1,17 @@
+#!/bin/sh
+
+#Array of directories to be added to $PATH.
+dirs=(
+        "$HOME/bin"
+        "$HOME/.local/bin"
+        "$HOME/.local/usr/bin"
+        "$HOME/.local/usr/local/bin"
+)
+
+# Loop through each directory and add it to $PATH if it exists.
+for dir in "${dirs[@]}"; do
+        if [ -d "$dir" ]; then
+                export PATH="$dir:$PATH"
+        fi
+done
+
